@@ -1,0 +1,203 @@
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+         xmlns:owl="http://www.w3.org/2002/07/owl#"
+         xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+         xmlns:spa="http://example.org/SPA#">
+
+  <!-- Déclaration de l'ontologie -->
+  <owl:Ontology rdf:about="http://example.org/SPA"/>
+
+  <!-- Composants principaux -->
+  <owl:Class rdf:about="spa:Weather">
+    <rdfs:comment>Components running at the atmosphere level</rdfs:comment>
+  </owl:Class>
+
+  <owl:Class rdf:about="spa:Meteorology">
+    <rdfs:subClassOf rdf:resource="spa:Weather"/>
+    <rdfs:comment>Processes related to reading meteorological data and computing weather variables</rdfs:comment>
+  </owl:Class>
+
+  <owl:Class rdf:about="spa:SoilPlantAtmosphere">
+    <rdfs:comment>Components related to interactions between soil, plant and atmosphere</rdfs:comment>
+  </owl:Class>
+
+  <!-- Température du sol -->
+  <owl:Class rdf:about="spa:SoilTemperature">
+    <rdfs:subClassOf rdf:resource="spa:SoilPlantAtmosphere"/>
+    <rdfs:comment>Processes related to soil surface and layer temperature</rdfs:comment>
+  </owl:Class>
+
+  <owl:Class rdf:about="spa:SurfaceTemperature">
+    <rdfs:subClassOf rdf:resource="spa:SoilTemperature"/>
+    <rdfs:comment>Calculate the temperature at the surface</rdfs:comment>
+  </owl:Class>
+
+  <owl:Class rdf:about="spa:LayerTemperature">
+    <rdfs:subClassOf rdf:resource="spa:SoilTemperature"/>
+    <rdfs:comment>Calculate the temperature for the whole soil or each layer</rdfs:comment>
+  </owl:Class>
+
+  <!-- Bilan énergétique -->
+  <owl:Class rdf:about="spa:EnergyBalance">
+    <rdfs:subClassOf rdf:resource="spa:SoilPlantAtmosphere"/>
+    <rdfs:comment>Energy fluxes between atmosphere, canopy and soil</rdfs:comment>
+  </owl:Class>
+
+  <owl:Class rdf:about="spa:CanopyTemperature">
+    <rdfs:subClassOf rdf:resource="spa:EnergyBalance"/>
+    <rdfs:comment>Calculate canopy temperature</rdfs:comment>
+  </owl:Class>
+
+  <owl:Class rdf:about="spa:PotentialEvapotranspiration">
+    <rdfs:subClassOf rdf:resource="spa:EnergyBalance"/>
+    <rdfs:comment>Calculate potential evapotranspiration</rdfs:comment>
+  </owl:Class>
+
+  <owl:Class rdf:about="spa:ActualEvapotranspiration">
+    <rdfs:subClassOf rdf:resource="spa:EnergyBalance"/>
+    <rdfs:comment>Calculate actual evapotranspiration</rdfs:comment>
+  </owl:Class>
+
+  <owl:Class rdf:about="spa:HeatFlux">
+    <rdfs:subClassOf rdf:resource="spa:EnergyBalance"/>
+    <rdfs:comment>Calculate heat flux between compartments</rdfs:comment>
+  </owl:Class>
+
+  <!-- Lumière -->
+  <owl:Class rdf:about="spa:LightInterception">
+    <rdfs:subClassOf rdf:resource="spa:SoilPlantAtmosphere"/>
+    <rdfs:comment>Processes related to solar radiation intercepted by canopy</rdfs:comment>
+  </owl:Class>
+
+  <!-- Eau -->
+  <owl:Class rdf:about="spa:WaterDynamics">
+    <rdfs:subClassOf rdf:resource="spa:SoilPlantAtmosphere"/>
+    <rdfs:comment>Water supply and uptake processes</rdfs:comment>
+  </owl:Class>
+
+  <owl:Class rdf:about="spa:WaterDemandSupply">
+    <rdfs:subClassOf rdf:resource="spa:WaterDynamics"/>
+    <rdfs:comment>Soil water availability for crop</rdfs:comment>
+  </owl:Class>
+
+  <owl:Class rdf:about="spa:WaterUptake">
+    <rdfs:subClassOf rdf:resource="spa:WaterDynamics"/>
+    <rdfs:comment>Actual water uptake by plant</rdfs:comment>
+  </owl:Class>
+
+  <owl:Class rdf:about="spa:StressFactors">
+    <rdfs:subClassOf rdf:resource="spa:SoilPlantAtmosphere"/>
+    <rdfs:comment>Stress due to water content or evapotranspiration imbalance</rdfs:comment>
+  </owl:Class>
+
+  <!-- Sol -->
+  <owl:Class rdf:about="spa:Soil">
+    <rdfs:comment>Water, nutrient balance and surface coverage</rdfs:comment>
+  </owl:Class>
+
+  <owl:Class rdf:about="spa:SnowCover">
+    <rdfs:subClassOf rdf:resource="spa:Soil"/>
+    <rdfs:comment>Snow height processes including melt and accumulation</rdfs:comment>
+  </owl:Class>
+
+  <owl:Class rdf:about="spa:SoilWater">
+    <rdfs:subClassOf rdf:resource="spa:Soil"/>
+    <rdfs:comment>Water balance in the soil profile</rdfs:comment>
+  </owl:Class>
+
+  <owl:Class rdf:about="spa:SoilNitrogen">
+    <rdfs:subClassOf rdf:resource="spa:Soil"/>
+    <rdfs:comment>Nitrogen transformation in soil</rdfs:comment>
+  </owl:Class>
+
+  <owl:Class rdf:about="spa:SoilCarbon">
+    <rdfs:subClassOf rdf:resource="spa:Soil"/>
+    <rdfs:comment>Carbon pools and residue decomposition at the surface</rdfs:comment>
+  </owl:Class>
+
+  <owl:Class rdf:about="spa:OrganicMatterTransformation">
+    <rdfs:subClassOf rdf:resource="spa:SoilCarbon"/>
+    <rdfs:comment>Organic matter transformation processes</rdfs:comment>
+  </owl:Class>
+
+  <owl:Class rdf:about="spa:SoilSurfaceCoverage">
+    <rdfs:subClassOf rdf:resource="spa:SoilCarbon"/>
+    <rdfs:comment>Transformation of surface residues</rdfs:comment>
+  </owl:Class>
+
+  <owl:Class rdf:about="spa:SoilPhosphorus">
+    <rdfs:subClassOf rdf:resource="spa:Soil"/>
+    <rdfs:comment>Phosphorus transformation in soil</rdfs:comment>
+  </owl:Class>
+
+  <owl:Class rdf:about="spa:SoilPotassium">
+    <rdfs:subClassOf rdf:resource="spa:Soil"/>
+    <rdfs:comment>Potassium transformation in soil</rdfs:comment>
+  </owl:Class>
+
+  <!-- Plante -->
+  <owl:Class rdf:about="spa:Plant">
+    <rdfs:comment>Crop-level biological processes</rdfs:comment>
+  </owl:Class>
+
+  <owl:Class rdf:about="spa:Phenology">
+    <rdfs:subClassOf rdf:resource="spa:Plant"/>
+    <rdfs:comment>Development stages of the plant</rdfs:comment>
+  </owl:Class>
+
+  <owl:Class rdf:about="spa:ThermalTime">
+    <rdfs:subClassOf rdf:resource="spa:Plant"/>
+    <rdfs:comment>Thermal time calculation with temperature and stress</rdfs:comment>
+  </owl:Class>
+
+  <owl:Class rdf:about="spa:BiomassAccumulation">
+    <rdfs:subClassOf rdf:resource="spa:Plant"/>
+    <rdfs:comment>Photosynthesis, respiration, or radiation use efficiency</rdfs:comment>
+  </owl:Class>
+
+  <owl:Class rdf:about="spa:BiomassAllocation">
+    <rdfs:subClassOf rdf:resource="spa:Plant"/>
+    <rdfs:comment>Biomass distribution between plant organs</rdfs:comment>
+  </owl:Class>
+
+  <owl:Class rdf:about="spa:ShootSurfaceArea">
+    <rdfs:subClassOf rdf:resource="spa:Plant"/>
+    <rdfs:comment>Canopy growth and layering</rdfs:comment>
+  </owl:Class>
+
+  <owl:Class rdf:about="spa:GrainNumber">
+    <rdfs:subClassOf rdf:resource="spa:Plant"/>
+    <rdfs:comment>Grain number per ground area</rdfs:comment>
+  </owl:Class>
+
+  <owl:Class rdf:about="spa:RootGrowth">
+    <rdfs:subClassOf rdf:resource="spa:Plant"/>
+    <rdfs:comment>Root development and senescence</rdfs:comment>
+  </owl:Class>
+
+  <owl:Class rdf:about="spa:PestAndDiseases">
+    <rdfs:subClassOf rdf:resource="spa:Plant"/>
+    <rdfs:comment>Impact of pests and diseases on crop</rdfs:comment>
+  </owl:Class>
+
+  <owl:Class rdf:about="spa:PlantNitrogenDynamics">
+    <rdfs:subClassOf rdf:resource="spa:Plant"/>
+    <rdfs:comment>Nitrogen demand, uptake, and allocation</rdfs:comment>
+  </owl:Class>
+
+  <owl:Class rdf:about="spa:PlantNitrogenDemand">
+    <rdfs:subClassOf rdf:resource="spa:PlantNitrogenDynamics"/>
+    <rdfs:comment>Nitrogen demand processes</rdfs:comment>
+  </owl:Class>
+
+  <owl:Class rdf:about="spa:PlantNitrogenUptake">
+    <rdfs:subClassOf rdf:resource="spa:PlantNitrogenDynamics"/>
+    <rdfs:comment>Actual uptake of nitrogen by the plant</rdfs:comment>
+  </owl:Class>
+
+  <owl:Class rdf:about="spa:PlantNitrogenAllocation">
+    <rdfs:subClassOf rdf:resource="spa:PlantNitrogenDynamics"/>
+    <rdfs:comment>Allocation of nitrogen between plant organs</rdfs:comment>
+  </owl:Class>
+
+</rdf:RDF>
