@@ -1,11 +1,14 @@
-<rdf:RDF xml:base="https://github.com/TeikiRaihauti/CropModelProcesses/blob/main/SemanticComponents.owl"
-	 xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
-         xmlns:owl="http://www.w3.org/2002/07/owl#"
-         xmlns:xsd="http://www.w3.org/2001/XMLSchema#">
-
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://www.w3.org/2002/07/owl#"
+	 xml:base="http://www.w3.org/2002/07/owl"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+	 
   <!-- Déclaration de l'ontologie -->
-  <owl:Ontology rdf:about="CMP"/>
+  <owl:Ontology rdf:about="https://github.com/TeikiRaihauti/CropModelProcesses/blob/main/SemanticComponents.owl"/>
 
   <owl:Class rdf:about="Weather">
     <rdfs:comment>Components running at the atmosphere level</rdfs:comment>
